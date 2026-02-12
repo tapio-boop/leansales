@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lean Sales — Myynnin käyttöjärjestelmä B2B-yrityksille</title>
+<meta name="description" content="Lean Sales rakentaa B2B-yrityksille ennustettavan myyntijärjestelmän. 26 AI-agenttia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--bg2:#0f0f18;--c:#131320;--ch:#1a1a2e;--b:#252540;--bh:#3a3a5c;--t1:#f0f0f8;--t2:#8888a8;--t3:#5a5a78;--tl:#2dd4bf;--td:#1a9e8f;--tg:rgba(45,212,191,.07);--tb:rgba(45,212,191,.22);--pk:#f472b6;--pd:#db5a9c;--pg:rgba(244,114,182,.07);--pb:rgba(244,114,182,.22);--f:'Inter',-apple-system,sans-serif;--r:12px;--rs:8px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--f);background:var(--bg);color:var(--t1);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(9,9,15,.82);backdrop-filter:blur(24px);border-bottom:1px solid rgba(37,37,64,.5)}.logo{font-size:1.1rem;font-weight:700;letter-spacing:-.03em}
+.nl{display:flex;gap:1.75rem;align-items:center;list-style:none}.nl a{color:var(--t2);text-decoration:none;font-size:.875rem;font-weight:450;transition:color .2s}.nl a:hover{color:var(--t1)}
+.nc{padding:.5rem 1.2rem!important;border:1px solid var(--b)!important;border-radius:var(--rs)!important;font-weight:500!important;transition:all .2s!important;background:transparent;color:var(--t1)!important}.nc:hover{background:var(--tl)!important;border-color:var(--tl)!important;color:var(--bg)!important}
+.ls{font-size:.78rem;font-weight:500;font-family:var(--f);color:var(--t3);cursor:pointer;padding:.25rem .6rem;border:1px solid var(--b);border-radius:4px;background:transparent;transition:all .2s}.ls:hover{color:var(--tl);border-color:var(--tb)}
+.nh{display:none;background:none;border:none;color:var(--t1);font-size:1.4rem;cursor:pointer}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 6rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-20%;background:radial-gradient(ellipse 50% 40% at 30% 40%,rgba(45,212,191,.04),transparent 70%),radial-gradient(ellipse 40% 35% at 70% 60%,rgba(244,114,182,.03),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(37,37,64,.12) 80px,rgba(37,37,64,.12) 81px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(37,37,64,.12) 80px,rgba(37,37,64,.12) 81px);pointer-events:none}
+.ht{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;border:1px solid var(--b);border-radius:100px;font-size:.82rem;font-weight:450;color:var(--t2);margin-bottom:2.5rem;position:relative;z-index:1}.ht::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tl);box-shadow:0 0 8px var(--tl)}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.035em;margin-bottom:1.5rem;z-index:1;max-width:780px;position:relative}
+.hero h1 em{font-style:italic;font-weight:700;background:linear-gradient(135deg,var(--tl),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsb{font-size:1.1rem;color:var(--t2);max-width:540px;line-height:1.7;margin-bottom:3rem;z-index:1;position:relative}
+.hbb{display:flex;gap:1rem;z-index:1;position:relative}
+.bp{display:inline-flex;align-items:center;padding:.8rem 1.8rem;background:var(--t1);color:var(--bg);border:none;border-radius:var(--rs);font-family:var(--f);font-size:.92rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .25s}.bp:hover{background:var(--tl);transform:translateY(-1px);box-shadow:0 4px 20px rgba(45,212,191,.2)}
+.bs{display:inline-flex;align-items:center;padding:.8rem 1.8rem;background:transparent;color:var(--t1);border:1px solid var(--b);border-radius:var(--rs);font-family:var(--f);font-size:.92rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .25s}.bs:hover{border-color:var(--bh);background:var(--c)}
+section{padding:6rem 2rem;max-width:1200px;margin:0 auto}.sd{border-top:1px solid var(--b)}
+.sl{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--tl);margin-bottom:.75rem}.sl.p{color:var(--pk)}
+.st{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.75rem;line-height:1.15}
+.ss{font-size:1.05rem;color:var(--t2);max-width:580px;margin-bottom:3.5rem;line-height:1.65}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.cd{padding:1.75rem;background:var(--c);border:1px solid var(--b);border-radius:var(--r);transition:all .3s}.cd:hover{border-color:var(--pb);background:var(--ch)}
+.ic{width:40px;height:40px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.1rem;background:var(--pg);border:1px solid var(--pb)}
+.cd h3{font-size:1rem;font-weight:600;margin-bottom:.5rem}.cd p{font-size:.88rem;color:var(--t2);line-height:1.6}
+.ah{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;text-align:center;margin-bottom:3.5rem;letter-spacing:-.04em}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ac{padding:2.5rem;border:1px solid var(--b);border-radius:16px;background:var(--c);transition:border-color .3s}.ac.t:hover{border-color:var(--tb)}.ac.p:hover{border-color:var(--pb)}
+.ao{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.1rem;font-weight:600}
+.ao.t{background:var(--tg);border:1px solid var(--tb);color:var(--tl)}.ao.p{background:var(--pg);border:1px solid var(--pb);color:var(--pk)}
+.ac h3{font-size:1.5rem;font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em}.ac>p{color:var(--t2);line-height:1.7;font-size:.95rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.lc{padding:2rem;border:1px solid var(--b);border-radius:var(--r);background:var(--c);transition:all .3s;position:relative;overflow:hidden}.lc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.lc.s::before{background:var(--tl)}.lc.m::before{background:linear-gradient(90deg,var(--tl),var(--pk))}.lc.e::before{background:var(--pk)}
+.lc:hover{border-color:var(--bh);background:var(--ch)}
+.ln{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}.lc.s .ln{color:var(--tl)}.lc.m .ln,.lc.e .ln{color:var(--pk)}
+.lc h3{font-size:1.15rem;font-weight:650;margin-bottom:.6rem}.lc>p{font-size:.88rem;color:var(--t2);line-height:1.6;margin-bottom:1rem}
+.la{list-style:none}.la li{font-size:.82rem;color:var(--t3);padding:.3rem 0 .3rem 1.1rem;position:relative}.la li::before{content:'\2B21';position:absolute;left:0;font-size:.55rem;top:.4rem;color:var(--td)}
+.sc{padding:2.25rem;border:1px solid var(--b);border-radius:14px;background:var(--c);transition:all .3s}.sc:hover{border-color:var(--bh)}
+.sn{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+.sc h3{font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.6rem}.sc>p{font-size:.9rem;color:var(--t2);line-height:1.6;margin-bottom:1.25rem}
+.sf{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}.sp{font-size:.72rem;font-weight:500;padding:.3rem .65rem;border-radius:4px;border:1px solid var(--b);color:var(--t2)}.sa{color:var(--t3);font-size:.72rem;display:flex;align-items:center}
+.wc{padding:2rem;border-radius:var(--r);background:var(--c);border:1px solid var(--b);transition:all .3s;position:relative;overflow:hidden}.wc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.wc.x::before{background:var(--tl)}.wc.a::before{background:var(--pk)}.wc.n::before{background:linear-gradient(90deg,var(--tl),var(--pk))}
+.wc:hover{border-color:var(--bh);transform:translateY(-2px)}
+.wt{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:4px;margin-bottom:1rem}
+.wt.x{color:var(--tl);background:var(--tg);border:1px solid var(--tb)}.wt.a{color:var(--pk);background:var(--pg);border:1px solid var(--pb)}.wt.n{background:linear-gradient(135deg,var(--tg),var(--pg));border:1px solid var(--b);color:var(--t1)}
+.wc h3{font-size:1.1rem;font-weight:650;margin-bottom:.6rem}.wc>p{font-size:.88rem;color:var(--t2);line-height:1.6;margin-bottom:1.25rem}
+.wm{display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap}.wmi{font-size:.75rem;color:var(--t3);padding:.2rem .5rem;border:1px solid var(--b);border-radius:4px}
+.wa{list-style:none}.wa li{font-size:.82rem;color:var(--t3);padding:.3rem 0 .3rem 1.1rem;position:relative}.wa li::before{content:'\2192';position:absolute;left:0;color:var(--td);font-weight:500}
+.co{margin-top:3.5rem;padding:2rem 2.5rem;border-left:3px solid var(--tl);background:var(--tg);border-radius:0 var(--r) var(--r) 0}.co p{font-size:1.05rem;font-weight:500;line-height:1.6}.co .sm{font-size:.85rem;color:var(--t3);margin-top:.5rem;font-weight:400}
+.sv{padding:2.25rem 2rem;border:1px solid var(--b);border-radius:14px;background:var(--c);transition:all .3s}.sv:hover{border-color:var(--tb);transform:translateY(-2px)}
+.svt{font-size:.68rem;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:var(--tl);margin-bottom:.6rem}
+.sv h3{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}.sv>p{color:var(--t2);font-size:.9rem;line-height:1.6;margin-bottom:1.5rem}
+.si{list-style:none}.si li{font-size:.85rem;color:var(--t2);padding:.35rem 0 .35rem 1.2rem;position:relative}.si li::before{content:'\2192';position:absolute;left:0;color:var(--td);font-weight:500}
+.sgc{padding:2.25rem 2rem;border:1px solid var(--b);border-radius:14px;background:var(--c);transition:border-color .3s}.sgc:hover{border-color:var(--bh)}
+.sgi{width:42px;height:42px;border:1px solid var(--b);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1rem}
+.sgc h3{font-size:1.05rem;font-weight:650;margin-bottom:.6rem}.sgc>p{color:var(--t2);font-size:.88rem;line-height:1.6;margin-bottom:1rem}
+.sgd{list-style:none}.sgd li{font-size:.82rem;color:var(--t3);padding:.3rem 0 .3rem 1rem;position:relative}.sgd li::before{content:'\00B7';position:absolute;left:0;color:var(--tl);font-weight:900;font-size:1.2em}
+.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.rc{text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--b);border-radius:14px;background:var(--c)}
+.rn{font-size:2.8rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(135deg,var(--tl),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.5rem}
+.rl{font-size:.85rem;color:var(--t2);line-height:1.4}
+.bl{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;align-items:center}
+.bv{background:linear-gradient(135deg,var(--c),var(--bg2));border:1px solid var(--b);border-radius:16px;padding:3rem;display:flex;align-items:center;justify-content:center;min-height:340px}
+.bm{width:170px;height:245px;background:linear-gradient(145deg,#151530,#0c0c1a);border:1px solid var(--b);border-radius:3px 10px 10px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:12px 6px 30px rgba(0,0,0,.5);padding:1.25rem;text-align:center;position:relative}
+.bm::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--tl),var(--pk));border-radius:3px 0 0 3px}
+.bmt{font-size:1.3rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:.4rem}.bms{font-size:.65rem;color:var(--t3);margin-bottom:.8rem}.bma{font-size:.68rem;color:var(--t3);letter-spacing:.08em;text-transform:uppercase}
+.bh{list-style:none;margin-bottom:2rem}.bh li{font-size:.9rem;color:var(--t2);padding:.4rem 0 .4rem 1.5rem;position:relative}.bh li::before{content:'\2713';position:absolute;left:0;color:var(--tl);font-weight:600}
+.abl{display:grid;grid-template-columns:.7fr 1.3fr;gap:4rem;align-items:start}
+.abp{width:100%;aspect-ratio:3/4;background:var(--c);border:1px solid var(--b);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:.85rem}
+.cr{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}.crt{padding:.35rem .8rem;border:1px solid var(--b);border-radius:6px;font-size:.78rem;color:var(--t3)}
+.ctas{text-align:center;padding:8rem 2rem}
+.ctas h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1rem}
+.ctas p{color:var(--t2);font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem}
+footer{border-top:1px solid var(--b);padding:2.5rem 2rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.fl{font-size:.82rem;color:var(--t3)}.fr{display:flex;gap:1.5rem}.fr a{color:var(--t3);text-decoration:none;font-size:.82rem;transition:color .2s}.fr a:hover{color:var(--tl)}
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.fi.v{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.g2,.g3,.ly,.rg{grid-template-columns:1fr}.rg{grid-template-columns:repeat(2,1fr)}.bl,.abl{grid-template-columns:1fr;gap:2rem}.hbb{flex-direction:column;align-items:center}footer{flex-direction:column;gap:1.5rem;text-align:center}}
+@media(max-width:768px){.nh{display:block}.nl{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--b);flex-direction:column;padding:1.5rem 2rem;gap:.75rem}.nl.open{display:flex}section.x{padding:4rem 1.25rem}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">Lean Sales</div>
+<button class="nh" onclick="document.querySelector('.nl').classList.toggle('open')">&#9776;</button>
+<ul class="nl">
+<li><a href="#problem" data-fi="Ongelma" data-en="Problem">Ongelma</a></li>
+<li><a href="#ai" data-fi="AI-agentit" data-en="AI Agents">AI-agentit</a></li>
+<li><a href="#services" data-fi="Palvelut" data-en="Services">Palvelut</a></li>
+<li><a href="#segments" data-fi="Kenelle" data-en="For whom">Kenelle</a></li>
+<li><a href="#book" data-fi="Kirja" data-en="Book">Kirja</a></li>
+<li><a href="#about">Tapio</a></li>
+<li><button class="ls" onclick="toggleLang()">EN</button></li>
+<li><a href="#contact" class="nc" data-fi="Ota yhteytt&auml;" data-en="Get in touch">Ota yhteytt&auml;</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div class="ht" data-fi="B2B-myynti &middot; Lean &middot; teko&auml;ly" data-en="B2B sales &middot; Lean &middot; AI">B2B-myynti &middot; Lean &middot; teko&auml;ly</div>
+<h1 class="fi" data-fi='Myyntisi tuottaa tulosta.<br>Mutta <em>toistuuko</em> se?' data-en='Your sales deliver.<br>But can you <em>repeat</em> it?'>Myyntisi tuottaa tulosta.<br>Mutta <em>toistuuko</em> se?</h1>
+<p class="hsb fi" data-fi="Rakennamme B2B-yrityksille myyntij&auml;rjestelm&auml;n, jossa tulos ei riipu yksitt&auml;isist&auml; sankareista. Ennustettava pipeline, selke&auml; johtamismalli ja 26 AI-agenttia, jotka operoivat rakenteessa." data-en="We build B2B sales systems where results don't depend on individual heroes. Predictable pipeline, clear management model, and 26 AI agents operating within a proven structure.">Rakennamme B2B-yrityksille myyntij&auml;rjestelm&auml;n, jossa tulos ei riipu yksitt&auml;isist&auml; sankareista. Ennustettava pipeline, selke&auml; johtamismalli ja 26 AI-agenttia, jotka operoivat rakenteessa.</p>
+<div class="hbb fi">
+<a href="#contact" class="bp" data-fi="Varaa keskustelu &rarr;" data-en="Book a conversation &rarr;">Varaa keskustelu &rarr;</a>
+<a href="#ai" class="bs" data-fi="Tutustu AI-agentteihin" data-en="Explore AI agents">Tutustu AI-agentteihin</a>
+</div>
+</section>
+
+<section id="problem" class="sd">
+<div class="sl p fi" data-fi="ONGELMA" data-en="THE PROBLEM">ONGELMA</div>
+<h2 class="st fi" data-fi="Tuttu tilanne?" data-en="Sound familiar?">Tuttu tilanne?</h2>
+<p class="ss fi" data-fi="Myynti n&auml;ytt&auml;&auml; aktiiviselta, mutta ennuste ei pid&auml;. Johto ei n&auml;e todellista tilannetta." data-en="Sales look active, but forecasts miss. Leadership can't see the real picture.">Myynti n&auml;ytt&auml;&auml; aktiiviselta, mutta ennuste ei pid&auml;. Johto ei n&auml;e todellista tilannetta.</p>
+<div class="g4">
+<div class="cd fi"><div class="ic">&#127919;</div><h3 data-fi="Tulos riippuu henkil&ouml;ist&auml;" data-en="Results depend on individuals">Tulos riippuu henkil&ouml;ist&auml;</h3><p data-fi="Kun paras myyj&auml; l&auml;htee, pipeline romahtaa. Ei ole j&auml;rjestelm&auml;&auml;, joka tuottaa tulosta riippumatta siit&auml;, kuka tekee." data-en="When your best seller leaves, the pipeline collapses. No system produces results regardless of who does the work.">Kun paras myyj&auml; l&auml;htee, pipeline romahtaa. Ei ole j&auml;rjestelm&auml;&auml;, joka tuottaa tulosta riippumatta siit&auml;, kuka tekee.</p></div>
+<div class="cd fi"><div class="ic">&#128202;</div><h3 data-fi="Ennuste ei pid&auml;" data-en="Forecasts miss">Ennuste ei pid&auml;</h3><p data-fi="CRM on t&auml;ynn&auml; dataa, mutta kukaan ei luota ennusteeseen. Pipeline-vaiheet ovat ep&auml;m&auml;&auml;r&auml;isi&auml;." data-en="CRM is full of data, but no one trusts the forecast. Pipeline stages are vague.">CRM on t&auml;ynn&auml; dataa, mutta kukaan ei luota ennusteeseen. Pipeline-vaiheet ovat ep&auml;m&auml;&auml;r&auml;isi&auml;.</p></div>
+<div class="cd fi"><div class="ic">&#129302;</div><h3 data-fi="AI lis&auml;&auml; sekavuutta" data-en="AI adds confusion">AI lis&auml;&auml; sekavuutta</h3><p data-fi="AI-hankkeet eiv&auml;t tuota tulosta, koska myyntiprosessi on liian ep&auml;m&auml;&auml;r&auml;inen automatisoitavaksi." data-en="AI initiatives fail because the sales process is too vague to automate. Agents need structure.">AI-hankkeet eiv&auml;t tuota tulosta, koska myyntiprosessi on liian ep&auml;m&auml;&auml;r&auml;inen automatisoitavaksi.</p></div>
+<div class="cd fi"><div class="ic">&#9202;</div><h3 data-fi="Kiireist&auml; mutta tehotonta" data-en="Busy but inefficient">Kiireist&auml; mutta tehotonta</h3><p data-fi="Suuri osa ajasta kuluu arvoa tuottamattomaan tekemiseen. Hukka on n&auml;kym&auml;t&ouml;nt&auml;." data-en="Most time goes to non-value-adding work. Waste is invisible.">Suuri osa ajasta kuluu arvoa tuottamattomaan tekemiseen. Hukka on n&auml;kym&auml;t&ouml;nt&auml;.</p></div>
+</div>
+</section>
+
+<section class="sd">
+<h2 class="ah fi">Simplify<span class="dt">.</span> Amplify<span class="dp">.</span> Apply<span style="color:var(--t2)">.</span></h2>
+<div class="g3">
+<div class="ac t fi"><div class="ao t">&darr;</div><h3>Simplify</h3><p data-fi="Lean-ajattelu karsii turhan pois. Selke&auml;t vaiheet, m&auml;&auml;ritellyt siirtym&auml;kriteerit ja fokus arvoa tuottavaan tekemiseen. T&auml;m&auml; on perusta &mdash; ilman rakennetta mik&auml;&auml;n automaatio ei toimi." data-en="Lean thinking removes waste. Clear stages, defined transition criteria, focus on value. This is the foundation &mdash; without structure, no automation works.">Lean-ajattelu karsii turhan pois. Selke&auml;t vaiheet, m&auml;&auml;ritellyt siirtym&auml;kriteerit ja fokus arvoa tuottavaan tekemiseen. T&auml;m&auml; on perusta &mdash; ilman rakennetta mik&auml;&auml;n automaatio ei toimi.</p></div>
+<div class="ac p fi"><div class="ao p">&uarr;</div><h3>Amplify</h3><p data-fi="26 AI-agenttia vahvistaa yksinkertaistetut prosessit. Agentit monistavat parhaat k&auml;yt&auml;nn&ouml;t strategiasta toteutukseen &mdash; nopeammin ja johdonmukaisemmin kuin kukaan yksitt&auml;inen myyj&auml;." data-en="26 AI agents amplify simplified processes. Agents replicate best practices from strategy to execution &mdash; faster and more consistently than any individual seller.">26 AI-agenttia vahvistaa yksinkertaistetut prosessit. Agentit monistavat parhaat k&auml;yt&auml;nn&ouml;t strategiasta toteutukseen &mdash; nopeammin ja johdonmukaisemmin kuin kukaan yksitt&auml;inen myyj&auml;.</p></div>
+<div class="ac fi" style="border-color:var(--bh)"><div class="ao" style="background:rgba(240,240,248,.05);border:1px solid var(--bh);color:var(--t2)">&rarr;</div><h3>Apply</h3><p data-fi="Yksi menetelm&auml;, kolme operointitapaa. Ihmistiimille se tuo rakenteen ja johtamismallin. AI-agenteille se antaa prosessin, jossa operoida. Tai molemmat yhdess&auml; &mdash; silloin saat parhaan tuloksen. Yhdistelm&auml; ei ole pakollinen." data-en="One method, three ways to operate. For human teams it brings structure and management model. For AI agents it provides a process to operate within. Or both together &mdash; that's when you get the best results. The combination is not mandatory.">Yksi menetelm&auml;, kolme operointitapaa. Ihmistiimille se tuo rakenteen ja johtamismallin. AI-agenteille se antaa prosessin, jossa operoida. Tai molemmat yhdess&auml; &mdash; silloin saat parhaan tuloksen. Yhdistelm&auml; ei ole pakollinen.</p></div>
+</div>
+</section>
+
+<section id="ai" class="sd" style="padding:7rem 2rem">
+<div class="sl fi" data-fi="AGENTTIJ&Auml;RJESTELM&Auml;" data-en="AGENTIC SALES SYSTEM">AGENTTIJ&Auml;RJESTELM&Auml;</div>
+<h2 class="st fi" data-fi="26 AI-agenttia kolmessa kerroksessa" data-en="26 AI agents across three layers">26 AI-agenttia kolmessa kerroksessa</h2>
+<div class="ain fi"><p data-fi="Agenttij&auml;rjestelm&auml; ei ole yksitt&auml;inen ty&ouml;kalu. Se on <strong>kolmikerroksinen myyntiorganisaatio</strong>, jossa strategia ohjaa toteutusta ja johtamiskerros varmistaa laadun." data-en="The agentic system isn't a single tool. It's a <strong>three-layer sales organization</strong> where strategy guides execution and management ensures quality.">Agenttij&auml;rjestelm&auml; ei ole yksitt&auml;inen ty&ouml;kalu. Se on <strong>kolmikerroksinen myyntiorganisaatio</strong>, jossa strategia ohjaa toteutusta ja johtamiskerros varmistaa laadun.</p></div>
+
+<div class="g3 ly">
+<div class="lc s fi"><div class="ln" data-fi="STRATEGIAKERROS" data-en="STRATEGY LAYER">STRATEGIAKERROS</div><h3 data-fi="Kuka, mit&auml;, miksi" data-en="Who, what, why">Kuka, mit&auml;, miksi</h3><p data-fi="M&auml;&auml;rittelee kohderyh&auml;t, tarjoaman ja arvolupaukset." data-en="Defines targets, offerings, and value propositions.">M&auml;&auml;rittelee kohderyh&auml;t, tarjoaman ja arvolupaukset.</p>
+<ul class="la"><li data-fi="Markkinatiedustelu-agentti" data-en="Market Intelligence Agent">Markkinatiedustelu-agentti</li><li data-fi="Segmentointistrategia-agentti" data-en="Segment Strategy Agent">Segmentointistrategia-agentti</li><li data-fi="Arvolupauksen optimointiagentti" data-en="Value Prop Optimization Agent">Arvolupauksen optimointiagentti</li><li data-fi="Tarjoamakonfiguraatio-agentti" data-en="Offering Configuration Agent">Tarjoamakonfiguraatio-agentti</li></ul></div>
+<div class="lc m fi"><div class="ln" data-fi="JOHTAMISKERROS" data-en="MANAGEMENT LAYER">JOHTAMISKERROS</div><h3 data-fi="Laatu ja kehitys" data-en="Quality &amp; improvement">Laatu ja kehitys</h3><p data-fi="Valvoo suorituskyky&auml;, ennustaa ja ohjaa parantamista." data-en="Monitors performance, forecasts, and drives improvement.">Valvoo suorituskyky&auml;, ennustaa ja ohjaa parantamista.</p>
+<ul class="la"><li data-fi="Sales Ops -johtamisagentti" data-en="Sales Ops Management Agent">Sales Ops -johtamisagentti</li><li data-fi="Analytiikka &amp; ennusteagentti" data-en="Analytics &amp; Forecasting Agent">Analytiikka &amp; ennusteagentti</li><li data-fi="Suorituskyvyn valmennusagentti" data-en="Performance Coaching Agent">Suorituskyvyn valmennusagentti</li><li data-fi="Laadunvarmistusagentti" data-en="Quality Assurance Agent">Laadunvarmistusagentti</li><li data-fi="Jatkuvan parantamisen agentti" data-en="Continuous Improvement Agent">Jatkuvan parantamisen agentti</li></ul></div>
+<div class="lc e fi"><div class="ln" data-fi="TOTEUTUSKERROS" data-en="EXECUTION LAYER">TOTEUTUSKERROS</div><h3 data-fi="P&auml;ivitt&auml;inen myyntity&ouml;" data-en="Daily sales execution">P&auml;ivitt&auml;inen myyntity&ouml;</h3><p data-fi="Prospektoinnista closingiin ja asiakkuuden siirtoon." data-en="From prospecting to closing and customer handoff.">Prospektoinnista closingiin ja asiakkuuden siirtoon.</p>
+<ul class="la"><li data-fi="Prospektointiagentti" data-en="Prospect Intelligence Agent">Prospektointiagentti</li><li data-fi="Outreach-automaatioagentti" data-en="Outreach Automation Agent">Outreach-automaatioagentti</li><li data-fi="Discovery-agentti" data-en="Discovery Agent">Discovery-agentti</li><li data-fi="Kvalifiointiagentti" data-en="Qualification Agent">Kvalifiointiagentti</li><li data-fi="Arvomyyntiagentti" data-en="Value Selling Agent">Arvomyyntiagentti</li><li data-fi="+ 12 muuta agenttia" data-en="+ 12 more agents">+ 12 muuta agenttia</li></ul></div>
+</div>
+
+<h3 class="st fi" style="font-size:1.5rem;margin-bottom:.5rem" data-fi="Kaksi ydinjärjestelmää" data-en="Two core systems">Kaksi ydinj&auml;rjestelm&auml;&auml;</h3>
+<p class="ss fi" data-fi="Agentit organisoituvat kahteen j&auml;rjestelm&auml;&auml;n." data-en="Agents organize into two systems.">Agentit organisoituvat kahteen j&auml;rjestelm&auml;&auml;n.</p>
+<div class="g2" style="margin-bottom:4rem">
+<div class="sc fi" style="border-left:3px solid var(--tl)"><div class="sn" style="color:var(--tl)" data-fi="J&Auml;RJESTELM&Auml; 1 &middot; 8 AGENTTIA" data-en="SYSTEM 1 &middot; 8 AGENTS">J&Auml;RJESTELM&Auml; 1 &middot; 8 AGENTTIA</div><h3 data-fi="Mahdollisuuksien tuottokone" data-en="Opportunity Generation Engine">Mahdollisuuksien tuottokone</h3><p data-fi="Muuttaa strategian ennustettavaksi virraksi kvalifioituja myyntimahdollisuuksia." data-en="Transforms strategy into a predictable flow of qualified opportunities.">Muuttaa strategian ennustettavaksi virraksi kvalifioituja myyntimahdollisuuksia.</p>
+<div class="sf"><span class="sp" data-fi="Segmentointi" data-en="Segmentation">Segmentointi</span><span class="sa">&rarr;</span><span class="sp" data-fi="Prospektointi" data-en="Prospecting">Prospektointi</span><span class="sa">&rarr;</span><span class="sp">Outreach</span><span class="sa">&rarr;</span><span class="sp">Discovery</span><span class="sa">&rarr;</span><span class="sp" data-fi="Kvalifiointi" data-en="Qualification">Kvalifiointi</span></div></div>
+<div class="sc fi" style="border-left:3px solid var(--pk)"><div class="sn" style="color:var(--pk)" data-fi="J&Auml;RJESTELM&Auml; 2 &middot; 10 AGENTTIA" data-en="SYSTEM 2 &middot; 10 AGENTS">J&Auml;RJESTELM&Auml; 2 &middot; 10 AGENTTIA</div><h3 data-fi="Diilin voittokone" data-en="Opportunity Pursuit System">Diilin voittokone</h3><p data-fi="Muuttaa kvalifioidut mahdollisuudet voitetuiksi kaupoiksi johdonmukaisesti." data-en="Converts qualified opportunities into won deals consistently.">Muuttaa kvalifioidut mahdollisuudet voitetuiksi kaupoiksi johdonmukaisesti.</p>
+<div class="sf"><span class="sp" data-fi="Arvolaskenta" data-en="Value calc">Arvolaskenta</span><span class="sa">&rarr;</span><span class="sp" data-fi="Argumentointi" data-en="Argumentation">Argumentointi</span><span class="sa">&rarr;</span><span class="sp" data-fi="Tarjous" data-en="Proposal">Tarjous</span><span class="sa">&rarr;</span><span class="sp">Closing</span><span class="sa">&rarr;</span><span class="sp">Handoff</span></div></div>
+</div>
+
+<h3 class="st fi" style="font-size:1.5rem;margin-bottom:.5rem" data-fi="Kolme myynnin ty&ouml;nkulkua" data-en="Three sales workflows">Kolme myynnin ty&ouml;nkulkua</h3>
+<p class="ss fi" data-fi="J&auml;rjestelm&auml;t palvelevat kolmea kasvustrategiaa. Aloita sielta, miss&auml; on suurin vaikutus." data-en="The systems serve three growth strategies. Start where impact is greatest.">J&auml;rjestelm&auml;t palvelevat kolmea kasvustrategiaa. Aloita sielt&auml;, miss&auml; on suurin vaikutus.</p>
+<div class="g3">
+<div class="wc x fi"><div class="wt x">EXPAND</div><h3 data-fi="Kasvata nykyasiakkaita" data-en="Grow existing customers">Kasvata nykyasiakkaita</h3><p data-fi="Systematisoi upsell ja cross-sell. Korkein ROI, nopein aikataulu. Suosittelemme aloituspisteeksi." data-en="Systematize upsell and cross-sell. Highest ROI, fastest timeline. Our recommended starting point.">Systematisoi upsell ja cross-sell. Korkein ROI, nopein aikataulu. Suosittelemme aloituspisteeksi.</p>
+<div class="wm"><span class="wmi" data-fi="Arvo 30-90 pv" data-en="Value in 30-90 days">Arvo 30&ndash;90 pv</span><span class="wmi" data-fi="5-25x halvempi" data-en="5-25x cheaper">5&ndash;25&times; halvempi</span></div>
+<ul class="wa"><li data-fi="Asiakkuussuunnitteluagentti analysoi whitespace-potentiaalin" data-en="Account Planning Agent analyzes whitespace potential">Asiakkuussuunnitteluagentti analysoi whitespace-potentiaalin</li><li data-fi="Discovery-agentti tunnistaa uudet tarpeet ja p&auml;&auml;tt&auml;j&auml;t" data-en="Discovery Agent identifies new needs and decision-makers">Discovery-agentti tunnistaa uudet tarpeet ja p&auml;&auml;tt&auml;j&auml;t</li><li data-fi="Arvomyyntiagentti laskee laajennuksen ROI:n" data-en="Value Selling Agent calculates expansion ROI">Arvomyyntiagentti laskee laajennuksen ROI:n</li><li data-fi="Riskienhallinta-agentti arvioi kaupan etenemisen" data-en="Deal Risk Agent assesses deal progression">Riskienhallinta-agentti arvioi kaupan etenemisen</li></ul></div>
+<div class="wc a fi"><div class="wt a">ACQUIRE</div><h3 data-fi="Hanki uusia asiakkaita" data-en="Acquire new customers">Hanki uusia asiakkaita</h3><p data-fi="Ennustettava uusasiakashankinta tunnetuilla markkinoilla. Strategiasta voitettuihin kauppoihin." data-en="Predictable new customer acquisition in known markets. From strategy to won deals.">Ennustettava uusasiakashankinta tunnetuilla markkinoilla. Strategiasta voitettuihin kauppoihin.</p>
+<div class="wm"><span class="wmi" data-fi="Arvo 90-180 pv" data-en="Value in 90-180 days">Arvo 90&ndash;180 pv</span><span class="wmi" data-fi="Molemmat j&auml;rjestelm&auml;t" data-en="Both systems">Molemmat j&auml;rjestelm&auml;t</span></div>
+<ul class="wa"><li data-fi="Segmentointiagentti m&auml;&auml;rittelee ICP:t" data-en="Segment Agent defines ICPs">Segmentointiagentti m&auml;&auml;rittelee ICP:t</li><li data-fi="Prospektointiagentti tutkii ja priorisoi" data-en="Prospect Agent researches and prioritizes">Prospektointiagentti tutkii ja priorisoi</li><li data-fi="Outreach-agentti personoi kontaktoinnin" data-en="Outreach Agent personalizes contact">Outreach-agentti personoi kontaktoinnin</li><li data-fi="Kilpailutiedusteluagentti differoi" data-en="Competitive Intel Agent differentiates">Kilpailutiedusteluagentti differoi</li></ul></div>
+<div class="wc n fi"><div class="wt n">ENTER</div><h3 data-fi="Avaa uusia markkinoita" data-en="Enter new markets">Avaa uusia markkinoita</h3><p data-fi="Systemaattinen markkinoiden avaus lighthouse-strategialla. 12 agenttia ty&ouml;skentelee yhdess&auml;." data-en="Systematic market entry with lighthouse strategy. 12 agents working together.">Systemaattinen markkinoiden avaus lighthouse-strategialla. 12 agenttia ty&ouml;skentelee yhdess&auml;.</p>
+<div class="wm"><span class="wmi" data-fi="Arvo 6-12 kk" data-en="Value in 6-12 months">Arvo 6&ndash;12 kk</span><span class="wmi" data-fi="50% nopeampi" data-en="50% faster">50% nopeampi</span></div>
+<ul class="wa"><li data-fi="Markkinatiedusteluagentti analysoi uuden markkinan" data-en="Market Intel Agent analyzes new market">Markkinatiedusteluagentti analysoi uuden markkinan</li><li data-fi="Segmentointiagentti m&auml;&auml;rittelee beachhead-segmentin" data-en="Segment Agent defines beachhead segment">Segmentointiagentti m&auml;&auml;rittelee beachhead-segmentin</li><li data-fi="Arvolupausagentti mukauttaa viestit" data-en="Value Prop Agent adapts messaging">Arvolupausagentti mukauttaa viestit</li><li data-fi="Tarjoamaagentti luo pilottiohjelman" data-en="Offering Agent creates pilot program">Tarjoamaagentti luo pilottiohjelman</li></ul></div>
+</div>
+
+<div class="co fi"><p data-fi="AI ei korvaa j&auml;rjestelm&auml;&auml;. Se operoi j&auml;rjestelm&auml;ss&auml;." data-en="AI doesn't replace the system. It operates within the system.">AI ei korvaa j&auml;rjestelm&auml;&auml;. Se operoi j&auml;rjestelm&auml;ss&auml;.</p><div class="sm" data-fi="Lean Sales -filosofian ydinperiaate" data-en="Core principle of Lean Sales">Lean Sales -filosofian ydinperiaate</div></div>
+</section>
+
+<section id="services" class="sd">
+<div class="sl fi" data-fi="PALVELUT" data-en="SERVICES">PALVELUT</div>
+<h2 class="st fi" data-fi="Kolme tasoa" data-en="Three tiers">Kolme tasoa</h2>
+<p class="ss fi" data-fi="Inspiraatiosta jatkuvaan optimointiin." data-en="From inspiration to continuous optimization.">Inspiraatiosta jatkuvaan optimointiin.</p>
+<div class="g3">
+<div class="sv fi"><div class="svt" data-fi="INSPIRAATIO" data-en="INSPIRATION">INSPIRAATIO</div><h3>Lean Sales Snapshot</h3><p data-fi="Ymm&auml;rr&auml;t, miksi nykyinen myyntimallisi vuotaa rahaa." data-en="Understand why your current sales model leaks money.">Ymm&auml;rr&auml;t, miksi nykyinen myyntimallisi vuotaa rahaa.</p><ul class="si"><li data-fi="Keynote-puheet" data-en="Keynotes">Keynote-puheet</li><li data-fi="Nykytila-analyysi" data-en="Current state analysis">Nykytila-analyysi</li><li data-fi="Inspiraatioty&ouml;pajat" data-en="Workshops">Inspiraatioty&ouml;pajat</li></ul></div>
+<div class="sv fi"><div class="svt" data-fi="SUUNNITTELU" data-en="DESIGN">SUUNNITTELU</div><h3>Lean Sales Transformation</h3><p data-fi="Optimoitu myyntiprosessi, johtamismalli ja agenttiarkkitehtuuri." data-en="Optimized sales process, management model, and agent architecture.">Optimoitu myyntiprosessi, johtamismalli ja agenttiarkkitehtuuri.</p><ul class="si"><li data-fi="Prosessisuunnittelu" data-en="Process design">Prosessisuunnittelu</li><li data-fi="Johtamismalli" data-en="Management model">Johtamismalli</li><li data-fi="AI-agenttistrategia" data-en="AI agent strategy">AI-agenttistrategia</li></ul></div>
+<div class="sv fi"><div class="svt" data-fi="OPEROINTI" data-en="OPERATIONS">OPEROINTI</div><h3>Lean Sales Engine</h3><p data-fi="Jatkuva operointi, agenttien k&auml;ytt&ouml;&ouml;notto ja optimointi." data-en="Ongoing operations, agent deployment, and optimization.">Jatkuva operointi, agenttien k&auml;ytt&ouml;&ouml;notto ja optimointi.</p><ul class="si"><li>Sales Ops as a Service</li><li data-fi="AI-agenttien operointi" data-en="AI agent operations">AI-agenttien operointi</li><li data-fi="Jatkuva parantaminen" data-en="Continuous improvement">Jatkuva parantaminen</li></ul></div>
+</div>
+</section>
+
+<section id="segments" class="sd">
+<div class="sl fi" data-fi="KENELLE" data-en="FOR WHOM">KENELLE</div>
+<h2 class="st fi" data-fi="B2B-yritykset, jotka haluavat kasvaa hallitusti" data-en="B2B companies wanting controlled growth">B2B-yritykset, jotka haluavat kasvaa hallitusti</h2>
+<div class="g3" style="margin-top:2.5rem">
+<div class="sgc fi"><div class="sgi">&#9729;</div><h3 data-fi="SaaS-yhti&ouml;t" data-en="SaaS companies">SaaS-yhti&ouml;t</h3><p data-fi="Skaalautuva myyntiprosessi demosta sopimukseen." data-en="Scalable sales process from demo to contract.">Skaalautuva myyntiprosessi demosta sopimukseen.</p><ul class="sgd"><li data-fi="Product-led growth" data-en="Product-led growth">Product-led growth</li><li data-fi="Sales &amp; CS -yhteisty&ouml;" data-en="Sales &amp; CS alignment">Sales &amp; CS -yhteisty&ouml;</li><li data-fi="Churn-ennaltaehk&auml;isy" data-en="Churn prevention">Churn-ennaltaehk&auml;isy</li></ul></div>
+<div class="sgc fi"><div class="sgi">&#127981;</div><h3 data-fi="Teollisuusyritykset" data-en="Industrial companies">Teollisuusyritykset</h3><p data-fi="Lean ja teko&auml;ly osaksi pitki&auml; myyntisyklej&auml;." data-en="Lean and AI for long sales cycles.">Lean ja teko&auml;ly osaksi pitki&auml; myyntisyklej&auml;.</p><ul class="sgd"><li data-fi="Tarjouslaskennan tehostaminen" data-en="Proposal optimization">Tarjouslaskennan tehostaminen</li><li data-fi="Asiakkuudenhallinnan systematisointi" data-en="Account management">Asiakkuudenhallinnan systematisointi</li><li data-fi="Myyntitiimin valmennukset" data-en="Sales coaching">Myyntitiimin valmennukset</li></ul></div>
+<div class="sgc fi"><div class="sgi">&#128640;</div><h3 data-fi="Kasvuyhti&ouml;t" data-en="Growth companies">Kasvuyhti&ouml;t</h3><p data-fi="Myyntikoneisto nopeaan kasvuun ilman hukkaa." data-en="Sales machine for rapid growth without waste.">Myyntikoneisto nopeaan kasvuun ilman hukkaa.</p><ul class="sgd"><li data-fi="Go-to-market -strategia" data-en="Go-to-market strategy">Go-to-market -strategia</li><li data-fi="Ensimm&auml;isen myyj&auml;n palkkaus" data-en="First sales hire">Ensimm&auml;isen myyj&auml;n palkkaus</li><li data-fi="CRM &amp; prosessit" data-en="CRM &amp; processes">CRM &amp; prosessit</li></ul></div>
+</div>
+</section>
+
+<section class="sd">
+<div class="sl fi" data-fi="TULOKSET" data-en="RESULTS">TULOKSET</div>
+<h2 class="st fi" data-fi="Mitattavia tuloksia" data-en="Measurable results">Mitattavia tuloksia</h2>
+<p class="ss fi" data-fi="20 case-yrityksest&auml; ker&auml;tty&auml; dataa." data-en="Data from 20 case companies.">20 case-yrityksest&auml; ker&auml;tty&auml; dataa.</p>
+<div class="rg"><div class="rc fi"><div class="rn">+20%</div><div class="rl" data-fi="Voittoprosentti" data-en="Win rate">Voittoprosentti</div></div><div class="rc fi"><div class="rn">+11</div><div class="rl" data-fi="Lis&auml;p&auml;iv&auml;&auml; kentalle / myyj&auml;" data-en="Extra field days / seller">Lis&auml;p&auml;iv&auml;&auml; kent&auml;lle / myyj&auml;</div></div><div class="rc fi"><div class="rn">2&times;</div><div class="rl" data-fi="Tuottavuus 1. vuonna" data-en="Productivity year 1">Tuottavuus 1. vuonna</div></div><div class="rc fi"><div class="rn">20</div><div class="rl" data-fi="Dokumentoitua casea" data-en="Documented cases">Dokumentoitua casea</div></div></div>
+</section>
+
+<section id="book" class="sd">
+<div class="bl">
+<div class="bv fi"><div class="bm"><div class="bmt">Lean Sales</div><div class="bms">More Sales with Less Selling</div><div class="bma">Tapio Nissil&auml;</div></div></div>
+<div class="fi">
+<div class="sl" data-fi="KIRJA" data-en="THE BOOK">KIRJA</div>
+<h2 style="font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:1rem">Lean Sales</h2>
+<p style="color:var(--t2);line-height:1.7;margin-bottom:1.25rem;font-size:.95rem" data-fi="Analyyttinen l&auml;hestymistapa B2B-myynnin johtamiseen. Lean-periaatteet myynnin prosesseissa &mdash; testattu 20 yrityksess&auml;." data-en="An analytical approach to B2B sales management. Lean principles in sales &mdash; tested in 20 companies.">Analyyttinen l&auml;hestymistapa B2B-myynnin johtamiseen. Lean-periaatteet myynnin prosesseissa &mdash; testattu 20 yrityksess&auml;.</p>
+<ul class="bh"><li data-fi="Myynnin systeemisuunnittelu" data-en="Sales system design">Myynnin systeemisuunnittelu</li><li data-fi="20 case-esimerkki&auml;" data-en="20 case studies">20 case-esimerkki&auml;</li><li data-fi="5 johtajatarinaa" data-en="5 executive stories">5 johtajatarinaa</li><li data-fi="Hukan tunnistaminen" data-en="Waste identification">Hukan tunnistaminen</li></ul>
+<a href="https://www.amazon.com/Lean-Sales-Tapio-Nissil%C3%A4-ebook/dp/B00COVGXDQ" target="_blank" class="bs" data-fi="Osta Amazonista &rarr;" data-en="Buy on Amazon &rarr;">Osta Amazonista &rarr;</a>
+</div>
+</div>
+</section>
+
+<section id="about" class="sd">
+<div class="abl">
+<div class="abp fi">Kuva</div>
+<div class="fi">
+<div class="sl">TAPIO NISSIL&Auml;</div>
+<h2 style="font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:1.25rem" data-fi="Myynnin systeemisuunnittelija" data-en="Sales systems architect">Myynnin systeemisuunnittelija</h2>
+<p style="color:var(--t2);line-height:1.75;margin-bottom:1rem;font-size:.95rem" data-fi="Yli 25 vuoden kokemus B2B-myynnin johtamisesta. IBM, PwC, Tieto. Lean Sales -kirjan kirjoittaja." data-en="25+ years in B2B sales leadership. IBM, PwC, Tieto. Author of Lean Sales.">Yli 25 vuoden kokemus B2B-myynnin johtamisesta. IBM, PwC, Tieto. Lean Sales -kirjan kirjoittaja.</p>
+<p style="color:var(--t2);line-height:1.75;margin-bottom:1rem;font-size:.95rem" data-fi="Nykyisin my&ouml;s Metosin Oy:n CBO &mdash; AI-transformaatiot ja agenttij&auml;rjestelm&auml;t B2B-myynniss&auml;." data-en="Also CBO at Metosin Oy &mdash; AI transformations and agent systems for B2B sales.">Nykyisin my&ouml;s Metosin Oy:n CBO &mdash; AI-transformaatiot ja agenttij&auml;rjestelm&auml;t B2B-myynniss&auml;.</p>
+<div class="cr"><span class="crt">Lean Sales -kirjailija</span><span class="crt">IBM &amp; PwC alumni</span><span class="crt">CBO @ Metosin</span><span class="crt" data-fi="26 agentin arkkitehti" data-en="26-agent architect">26 agentin arkkitehti</span></div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="sd ctas">
+<h2 class="fi" data-fi="Aloitetaan keskustelulla" data-en="Let's start with a conversation">Aloitetaan keskustelulla</h2>
+<p class="fi" data-fi="20 minuutin keskustelu riitt&auml;&auml; selvitt&auml;m&auml;&auml;n, onko Lean Sales oikea l&auml;hestymistapa." data-en="20 minutes is enough to determine if Lean Sales is right for you.">20 minuutin keskustelu riitt&auml;&auml; selvitt&auml;m&auml;&auml;n, onko Lean Sales oikea l&auml;hestymistapa.</p>
+<a href="mailto:tapio@leansalesmethod.com" class="bp fi">tapio@leansalesmethod.com</a>
+</section>
+
+<footer>
+<div class="fl">&copy; 2013&ndash;2026 Lean Sales</div>
+<div class="fr"><a href="https://www.linkedin.com/in/tapio-nissila/" target="_blank">LinkedIn</a><a href="https://www.amazon.com/Lean-Sales-Tapio-Nissil%C3%A4-ebook/dp/B00COVGXDQ" target="_blank">Amazon</a></div>
+</footer>
+
+<script>
+let L='fi';
+function toggleLang(){
+  L=L==='fi'?'en':'fi';
+  document.querySelector('.ls').textContent=L==='fi'?'EN':'FI';
+  document.documentElement.lang=L;
+  document.querySelectorAll('[data-fi][data-en]').forEach(function(e){
+    var t=e.getAttribute('data-'+L);
+    if(t) e.innerHTML=t;
+  });
+  document.title=L==='fi'?'Lean Sales \u2014 Myynnin k\u00e4ytt\u00f6j\u00e4rjestelm\u00e4 B2B-yrityksille':'Lean Sales \u2014 Sales Operating System for B2B';
+}
+var O=new IntersectionObserver(function(entries){
+  entries.forEach(function(x){
+    if(x.isIntersecting) x.target.classList.add('v');
+  });
+},{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(function(el){O.observe(el);});
+document.querySelectorAll('.nl a').forEach(function(a){
+  a.addEventListener('click',function(){document.querySelector('.nl').classList.remove('open');});
+});
+</script>
+</body>
+</html>
