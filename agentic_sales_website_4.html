@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Sales System — Metosin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0B0D11;
+  --bg-card: #13161E;
+  --bg-card-hover: #1A1D27;
+  --bg-elevated: #1E2130;
+  --border: #252836;
+  --border-hover: #353849;
+
+  --text: #E8E9ED;
+  --text-secondary: #9DA1B3;
+  --text-muted: #5E6278;
+
+  --accent: #6366F1;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+
+  --clear: #10B981;
+  --complicated: #3B82F6;
+  --complex: #F59E0B;
+  --chaotic: #EF4444;
+
+  --expand: #A855F7;
+  --acquire: #22C55E;
+  --enter: #FB923C;
+
+  --har: #EC4899;
+  --infra: #475569;
+
+  --font: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); background: var(--bg); color: var(--text);
+  line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(11, 13, 17, 0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 clamp(1.5rem, 4vw, 4rem); height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo { font-weight: 700; font-size: 0.95rem; color: var(--text); letter-spacing: -0.02em; }
+nav .logo span { color: var(--accent); }
+nav ul { display: flex; gap: 2rem; list-style: none; }
+nav a { color: var(--text-muted); font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+nav a:hover { color: var(--text); }
+nav .cta-nav { background: var(--accent); color: white; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
+nav .cta-nav:hover { background: #5457E5; color: white; }
+
+/* SECTIONS */
+section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem); }
+.container { max-width: 1120px; margin: 0 auto; }
+.bg-alt { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.section-label {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem;
+}
+.section-label.har-label { color: var(--har); }
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700;
+  letter-spacing: -0.025em; line-height: 1.2; max-width: 640px;
+}
+.section-desc { color: var(--text-secondary); font-size: 0.95rem; max-width: 580px; margin-top: 0.8rem; line-height: 1.65; }
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--accent); color: white; border: none; padding: 0.7rem 1.6rem;
+  border-radius: 8px; font-family: var(--font); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { background: #5457E5; transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent; color: var(--text-secondary); border: 1px solid var(--border);
+  padding: 0.7rem 1.6rem; border-radius: 8px; font-family: var(--font); font-size: 0.85rem;
+  font-weight: 500; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  padding-top: calc(56px + clamp(5rem, 10vw, 9rem));
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 700px;
+  background: radial-gradient(ellipse at center, rgba(236,72,153,0.06) 0%, rgba(99,102,241,0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  padding: 0.35rem 0.8rem; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--har); }
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1.12; max-width: 760px;
+}
+h1 .accent { color: var(--har); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--text-secondary);
+  max-width: 620px; margin-top: 1.2rem; line-height: 1.65; font-weight: 400;
+}
+.hero-actions { display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; }
+
+/* HAR intro metric */
+.har-intro {
+  margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.har-intro-text h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--har); }
+.har-intro-text p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+
+.har-dimensions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;
+}
+.har-dim {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem;
+}
+.har-dim .dim-label {
+  font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 0.3rem;
+}
+.har-dim.quantity .dim-label { color: var(--har); }
+.har-dim.quality .dim-label { color: var(--accent); }
+.har-dim .dim-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.2rem; }
+.har-dim .dim-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ================================================================
+   HAR FRAMEWORK SECTION
+   ================================================================ */
+.har-spectrum {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem;
+}
+.har-level {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.3rem; position: relative; overflow: hidden;
+}
+.har-level::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.har-level.audit::before { background: var(--clear); }
+.har-level.validate::before { background: var(--complicated); }
+.har-level.direct::before { background: var(--complex); }
+.har-level.control::before { background: var(--chaotic); }
+
+.har-level .level-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.15rem; }
+.har-level.audit .level-name { color: var(--clear); }
+.har-level.validate .level-name { color: var(--complicated); }
+.har-level.direct .level-name { color: var(--complex); }
+.har-level.control .level-name { color: var(--chaotic); }
+
+.har-level .ratio {
+  font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.6rem;
+}
+.har-level .level-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0.5rem; }
+.har-level .level-examples {
+  font-size: 0.72rem; color: var(--text-muted); padding-top: 0.5rem;
+  border-top: 1px solid var(--border); line-height: 1.5;
+}
+
+.har-why {
+  margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem;
+}
+.har-why-item {
+  padding: 1.2rem; background: var(--bg-elevated); border-radius: 8px; border: 1px solid var(--border);
+}
+.har-why-item h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--har); }
+.har-why-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ================================================================
+   ARCHITECTURE
+   ================================================================ */
+.arch-stack { margin-top: 2.5rem; display: flex; flex-direction: column; }
+.arch-layer { border: 1px solid var(--border); padding: 1.5rem 2rem; position: relative; }
+.arch-layer:first-child { border-radius: 10px 10px 0 0; }
+.arch-layer:last-child { border-radius: 0 0 10px 10px; }
+.arch-layer + .arch-layer { border-top: none; }
+.arch-layer-label {
+  font-family: var(--mono); font-size: 0.65rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;
+}
+.arch-layer-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+.arch-layer-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+.layer-human { background: rgba(236, 72, 153, 0.04); }
+.layer-human .arch-layer-label { color: var(--har); }
+.layer-thinking { background: rgba(99, 102, 241, 0.06); border-left: 2px solid var(--accent) !important; border-right: 2px solid var(--accent) !important; }
+.layer-thinking .arch-layer-label { color: var(--accent); }
+.layer-thinking .arch-layer-title { color: var(--accent); }
+.layer-infra { background: rgba(71, 85, 105, 0.08); }
+.layer-infra .arch-layer-label { color: var(--infra); }
+.layer-infra .arch-layer-title { color: var(--text-muted); }
+
+.har-badge-arch {
+  position: absolute; right: 2rem; top: 1.5rem;
+  background: rgba(236, 72, 153, 0.1); border: 1px solid rgba(236, 72, 153, 0.2);
+  padding: 0.3rem 0.7rem; border-radius: 6px;
+  font-size: 0.68rem; font-weight: 600; color: var(--har);
+}
+
+.agent-sublayers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 1rem; }
+.agent-sub { background: var(--bg-elevated); border-radius: 6px; padding: 0.8rem 1rem; border-left: 2px solid var(--complicated); }
+.agent-sub.complex-border { border-left-color: var(--complex); }
+.agent-sub h4 { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem; }
+.agent-sub p { font-size: 0.7rem; color: var(--text-muted); line-height: 1.5; }
+.agent-sub .count { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); }
+
+.infra-tools { display: flex; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.infra-chip {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.72rem;
+  color: var(--text-secondary); font-weight: 500;
+}
+
+/* ================================================================
+   AGENT CATALOGUE
+   ================================================================ */
+.catalogue-grid { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.catalogue-layer { }
+.layer-tag {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.strategy-tag { color: #8B5CF6; }
+.management-tag { color: #06B6D4; }
+.execution-tag { color: var(--text-muted); }
+
+.cluster-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+}
+.cluster-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem 1.1rem; transition: border-color 0.2s;
+}
+.cluster-card:hover { border-color: var(--border-hover); }
+.cluster-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 0.5rem; margin-bottom: 0.5rem;
+}
+.cluster-card h4 { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+.cluster-card p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.55; }
+
+.har-chip {
+  font-family: var(--mono); font-size: 0.58rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.audit-chip { background: rgba(16,185,129,0.1); color: var(--clear); border: 1px solid rgba(16,185,129,0.2); }
+.validate-chip { background: rgba(59,130,246,0.1); color: var(--complicated); border: 1px solid rgba(59,130,246,0.2); }
+.direct-chip { background: rgba(245,158,11,0.1); color: var(--complex); border: 1px solid rgba(245,158,11,0.2); }
+.control-chip { background: rgba(239,68,68,0.1); color: var(--chaotic); border: 1px solid rgba(239,68,68,0.2); }
+
+/* ================================================================
+   MOTIONS
+   ================================================================ */
+.motions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+.motion-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.5rem; border-top: 2px solid transparent; transition: border-color 0.2s;
+}
+.motion-card:hover { border-color: var(--border-hover); }
+.motion-card.expand { border-top-color: var(--expand); }
+.motion-card.acquire { border-top-color: var(--acquire); }
+.motion-card.enter { border-top-color: var(--enter); }
+
+.motion-name {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;
+}
+.motion-card.expand .motion-name { color: var(--expand); }
+.motion-card.acquire .motion-name { color: var(--acquire); }
+.motion-card.enter .motion-name { color: var(--enter); }
+.motion-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; }
+.motion-card .desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+
+.motion-har {
+  background: var(--bg-elevated); border-radius: 6px; padding: 0.8rem; margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+.motion-har .har-tag {
+  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--har); margin-bottom: 0.3rem;
+}
+.motion-har p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; }
+
+.motion-steps { list-style: none; }
+.motion-steps li {
+  font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55;
+  padding: 0.35rem 0 0.35rem 1rem; position: relative;
+}
+.motion-steps li::before {
+  content: ''; position: absolute; left: 0; top: 0.65rem;
+  width: 4px; height: 4px; border-radius: 50%;
+}
+.motion-card.expand .motion-steps li::before { background: var(--expand); }
+.motion-card.acquire .motion-steps li::before { background: var(--acquire); }
+.motion-card.enter .motion-steps li::before { background: var(--enter); }
+
+.motion-infra {
+  margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border);
+  font-size: 0.7rem; color: var(--text-muted); line-height: 1.5;
+}
+.motion-infra strong { color: var(--infra); font-weight: 600; }
+
+/* ================================================================
+   PERSONAS
+   ================================================================ */
+.persona-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+.persona-item { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+.persona-item h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--accent); }
+.persona-item p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ================================================================
+   METHODOLOGY
+   ================================================================ */
+.method-flex { display: flex; gap: 2.5rem; margin-top: 2.5rem; align-items: flex-start; }
+.method-content { flex: 1; }
+.method-content p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+.method-book {
+  flex: 0 0 260px; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.5rem; text-align: center;
+}
+.method-book .book-icon {
+  width: 60px; height: 80px; background: linear-gradient(135deg, var(--accent), #818CF8);
+  border-radius: 4px; margin: 0 auto 1rem; display: flex; align-items: center;
+  justify-content: center; font-weight: 700; font-size: 0.7rem; color: white;
+  line-height: 1.2; padding: 0.5rem;
+}
+.method-book h3 { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+.method-book .author { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.method-book p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(236,72,153,0.06) 0%, rgba(99,102,241,0.04) 40%, transparent 70%);
+}
+.cta-section h2 { margin: 0 auto; }
+.cta-section .section-desc { margin: 0.8rem auto 0; }
+.cta-actions { display: flex; gap: 0.8rem; justify-content: center; margin-top: 2rem; }
+
+/* FOOTER */
+footer {
+  padding: 2.5rem clamp(1.5rem, 4vw, 4rem); border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 1120px; margin: 0 auto; display: flex;
+  justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+footer .company { font-size: 0.78rem; color: var(--text-muted); }
+footer .company strong { color: var(--text-secondary); font-weight: 600; }
+footer .links { display: flex; gap: 1.5rem; }
+footer .links a { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; }
+footer .links a:hover { color: var(--text-secondary); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .motions-grid, .har-spectrum { grid-template-columns: 1fr; }
+  .har-why, .persona-grid { grid-template-columns: 1fr; }
+  .agent-sublayers { grid-template-columns: 1fr; }
+  .method-flex { flex-direction: column; }
+  .method-book { flex: none; }
+  .har-intro { grid-template-columns: 1fr; }
+  .har-dimensions { grid-template-columns: 1fr 1fr; }
+  .cluster-row { grid-template-columns: 1fr; }
+  nav ul { display: none; }
+}
+@media (max-width: 600px) {
+  .har-dimensions { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>Agentic</span> Sales System</div>
+  <ul>
+    <li><a href="#har">HAR Model</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#motions">Sales Motions</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+  </ul>
+  <a href="#contact" class="cta-nav">Request a Briefing</a>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Human-Agent Ratio Framework</div>
+    <h1>Design a sales workforce where humans and AI agents <span class="accent">work together</span></h1>
+    <p class="hero-sub">
+      The Agentic Sales System uses the HAR (Human-Agent Ratio) model to define exactly which sales
+      tasks should be automated, which need AI augmentation, and which require human leadership —
+      then deploys the right AI agents on top of your existing infrastructure.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Briefing</a>
+      <a href="#har" class="btn-secondary">Explore the HAR Model</a>
+    </div>
+
+    <div class="har-intro">
+      <div class="har-intro-text">
+        <h3>What is HAR?</h3>
+        <p>
+          Human-Agent Ratio is a two-dimensional framework for designing organizations where
+          humans and AI agents collaborate. It answers the question most companies cannot:
+          <strong>for each task in your sales process, what is the right balance between
+          human judgment and AI capability?</strong>
+        </p>
+        <p style="margin-top: 0.6rem;">
+          Without HAR, companies either over-automate complex tasks (AI makes confident but wrong calls
+          on stakeholder politics) or under-automate simple ones (humans waste time approving routine actions).
+          HAR prevents both failure modes with a structured governance model.
+        </p>
+      </div>
+      <div class="har-dimensions">
+        <div class="har-dim quantity">
+          <div class="dim-label">Quantity Dimension</div>
+          <div class="dim-title">Agents per Human</div>
+          <div class="dim-desc">How many AI agents does each human oversee? From 1:1 on complex deals to 1:50+ on automated outreach.</div>
+        </div>
+        <div class="har-dim quality">
+          <div class="dim-label">Quality Dimension</div>
+          <div class="dim-title">Degree of Oversight</div>
+          <div class="dim-desc">What type of human involvement? Ranges from periodic audit to full human control, matched to task complexity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     HAR FRAMEWORK
+     ================================================================ -->
+<section id="har" class="bg-alt">
+  <div class="container">
+    <div class="section-label har-label">HAR Framework</div>
+    <h2>Four levels of human-AI collaboration — each matched to actual task complexity</h2>
+    <p class="section-desc">
+      HAR uses the Cynefin complexity framework to classify every sales task into its true domain,
+      then assigns the appropriate collaboration model. This is workforce design, not just technology deployment.
+    </p>
+
+    <div class="har-spectrum">
+      <div class="har-level audit">
+        <div class="level-name">Audit</div>
+        <div class="ratio">HAR: 10-50+ agents per human</div>
+        <div class="level-desc">
+          AI executes autonomously. Humans review periodically and handle exceptions.
+          Standard playbooks apply — the relationship between cause and effect is known.
+        </div>
+        <div class="level-examples">
+          Outreach sequences, lead nurturing, content distribution, customer handoff. The tasks your team
+          shouldn't be spending time on.
+        </div>
+      </div>
+
+      <div class="har-level validate">
+        <div class="level-name">Validate</div>
+        <div class="ratio">HAR: 5-15 agents per human</div>
+        <div class="level-desc">
+          AI performs expert analysis. Humans validate before action.
+          Right answers exist but require analytical work to discover.
+        </div>
+        <div class="level-examples">
+          Market intelligence, qualification scoring, pricing analysis, proposal generation, pipeline
+          forecasting. The analytical work that AI does faster and more consistently.
+        </div>
+      </div>
+
+      <div class="har-level direct">
+        <div class="level-name">Direct</div>
+        <div class="ratio">HAR: 1-3 agents per human</div>
+        <div class="level-desc">
+          Humans lead. AI augments perception, surfaces signals, suggests hypotheses.
+          No right answers — only emergent ones discovered through interaction.
+        </div>
+        <div class="level-examples">
+          Deal strategy, stakeholder navigation, negotiation, sales coaching, discovery conversations.
+          Where deals are actually won or lost.
+        </div>
+      </div>
+
+      <div class="har-level control">
+        <div class="level-name">Full Control</div>
+        <div class="ratio">HAR: 0-1 agents per human</div>
+        <div class="level-desc">
+          Humans decide and act. AI supports after stabilization with rapid information gathering
+          and scenario modeling. Novel situations that demand immediate judgment.
+        </div>
+        <div class="level-examples">
+          Deal crises — champion departure, budget freeze, competitive disruption, M&A.
+          The situations where playbooks don't apply.
+        </div>
+      </div>
+    </div>
+
+    <div class="har-why">
+      <div class="har-why-item">
+        <h4>For Sales Leadership</h4>
+        <p>HAR tells you exactly where your team should spend their time — on the Complex and Chaotic tasks that win deals — while AI handles the rest systematically. Scale capacity without proportional headcount.</p>
+      </div>
+      <div class="har-why-item">
+        <h4>For CIO & Technology Office</h4>
+        <p>HAR provides a governance framework for AI deployment with clear human oversight rules per task type. Auditable, explainable, and architecturally sound — integrates with your existing stack, not around it.</p>
+      </div>
+      <div class="har-why-item">
+        <h4>For HR & Learning Development</h4>
+        <p>HAR defines which capabilities humans need to develop (Complex domain skills) versus which are augmented by AI. A workforce planning model for the human-AI era that guides training investment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     ARCHITECTURE
+     ================================================================ -->
+<section id="architecture">
+  <div class="container">
+    <div class="section-label">Architecture</div>
+    <h2>A thinking layer governed by HAR, built on your existing infrastructure</h2>
+    <p class="section-desc">
+      We don't replace your tools. We add the intelligence they're missing — 32 specialized AI agents
+      that read from and write to your existing systems, each governed by the HAR model.
+    </p>
+
+    <div class="arch-stack">
+      <div class="arch-layer layer-human">
+        <span class="har-badge-arch">HAR Governance Layer</span>
+        <div class="arch-layer-label">Human Layer</div>
+        <div class="arch-layer-title">Your Sales Team</div>
+        <div class="arch-layer-desc">
+          Sales leadership, account executives, SDRs — making decisions with AI augmentation.
+          HAR defines the oversight model: Audit for routine agents, Validate for analytical agents,
+          Direct for complex deal agents, Full Control for crisis situations.
+        </div>
+      </div>
+      <div class="arch-layer layer-thinking">
+        <div class="arch-layer-label">Thinking Layer — Agentic Sales System</div>
+        <div class="arch-layer-title">32 Specialized AI Agents</div>
+        <div class="arch-layer-desc">
+          Each agent is classified by complexity domain and assigned a HAR level.
+          Agents share context and learn from each other across three organizational layers.
+        </div>
+        <div class="agent-sublayers">
+          <div class="agent-sub">
+            <h4>Strategy Agents</h4>
+            <p>Market intelligence, segment strategy, pricing, value proposition, competitive analysis</p>
+            <span class="count">6 agents · HAR: Validate</span>
+          </div>
+          <div class="agent-sub">
+            <h4>Management Agents</h4>
+            <p>Pipeline ops, analytics, coaching, quality assurance, win/loss analysis</p>
+            <span class="count">6 agents · HAR: Validate/Direct</span>
+          </div>
+          <div class="agent-sub complex-border">
+            <h4>Execution Agents</h4>
+            <p>Prospecting, discovery, deal strategy, negotiation, proposals, outreach, handoff</p>
+            <span class="count">20 agents · HAR: Full spectrum</span>
+          </div>
+        </div>
+      </div>
+      <div class="arch-layer layer-infra">
+        <div class="arch-layer-label">Your Existing Infrastructure</div>
+        <div class="arch-layer-title">No replacement. No migration. No disruption.</div>
+        <div class="arch-layer-desc">
+          The thinking layer connects to your systems via APIs. Your team keeps working in the tools they know.
+        </div>
+        <div class="infra-tools">
+          <span class="infra-chip">CRM (Salesforce, HubSpot, Dynamics...)</span>
+          <span class="infra-chip">Email (Outlook, Gmail)</span>
+          <span class="infra-chip">Calendar</span>
+          <span class="infra-chip">Documents (SharePoint, Drive)</span>
+          <span class="infra-chip">BI & Analytics</span>
+          <span class="infra-chip">ERP</span>
+          <span class="infra-chip">Marketing Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     AGENT CATALOGUE
+     ================================================================ -->
+<section id="agents" class="bg-alt">
+  <div class="container">
+    <div class="section-label">Agent Catalogue</div>
+    <h2>32 agents organized into 12 capability clusters — each with a defined HAR level</h2>
+    <p class="section-desc">
+      The catalogue is a menu, not a checklist. Each sales motion activates a different subset.
+      Clusters are grouped by organizational layer: Strategy, Management, and Execution.
+    </p>
+
+    <div class="catalogue-grid">
+      <!-- STRATEGY -->
+      <div class="catalogue-layer">
+        <div class="layer-tag strategy-tag">Strategy Layer · 6 agents</div>
+        <div class="cluster-row">
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Market & Competitive Intelligence</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Two modes: market-level (trends, sizing, competitive landscape) and deal-level (real-time battle cards, win/loss patterns). Feeds all downstream strategy decisions.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Segment & Value Strategy</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Segment definition, value proposition optimization, and channel strategy. Operates at the one-to-many level — creating the raw messaging that deal-level agents customize.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Pricing & Offering Configuration</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Pricing intelligence and offering configuration. Competitive pricing analysis, bundle optimization, and deal-specific pricing guidance within defined guardrails.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGEMENT -->
+      <div class="catalogue-layer">
+        <div class="layer-tag management-tag">Management Layer · 6 agents</div>
+        <div class="cluster-row">
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Pipeline Ops & Analytics</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Pipeline operations management and sales analytics/forecasting. Clean separation: Ops runs the process, Analytics measures and predicts. Forecast accuracy improves continuously.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Sales Coaching & QA</h4>
+              <span class="har-chip direct-chip">Direct</span>
+            </div>
+            <p>Two modes: performance coaching (skill gaps, development plans) and deal coaching (next-best-action, call preparation). Reads human context — always Complex domain work.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Win/Loss & Continuous Improvement</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Post-deal forensics and pattern analysis. Every outcome feeds back into Strategy and Execution layers. The learning engine that makes the entire system smarter over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXECUTION -->
+      <div class="catalogue-layer">
+        <div class="layer-tag execution-tag">Execution Layer · 20 agents</div>
+        <div class="cluster-row">
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Prospect & Account Intelligence</h4>
+              <span class="har-chip validate-chip">Validate</span>
+            </div>
+            <p>Firmographic, technographic, and intent signals. Buying readiness scoring and account whitespace analysis. The analytical foundation for targeting and prioritization.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Outreach & Nurturing</h4>
+              <span class="har-chip audit-chip">Audit</span>
+            </div>
+            <p>Automated outreach sequences, lead nurturing, and sales content distribution. Highest autonomy — runs at scale with periodic human review. Your volume engine.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Discovery & Qualification</h4>
+              <span class="har-chip direct-chip">Direct</span>
+            </div>
+            <p>Discovery (Complex — probes and learns) and Qualification (Complicated — analyzes against criteria). Two agents, two domains, one critical pipeline gate.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Deal Strategy & Win Planning</h4>
+              <span class="har-chip direct-chip">Direct</span>
+            </div>
+            <p>Living deal strategy, stakeholder mapping, competitive positioning, multi-threading. Where deals are actually won or lost. Human-led, AI-augmented.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Negotiation & Contracts</h4>
+              <span class="har-chip direct-chip">Direct</span>
+            </div>
+            <p>Concession modeling, BATNA analysis, contract clause analysis, compliance verification. Negotiation Strategy (Complex) and Legal Intelligence (Complicated) working together.</p>
+          </div>
+          <div class="cluster-card">
+            <div class="cluster-header">
+              <h4>Customer Success & Handoff</h4>
+              <span class="har-chip audit-chip">Audit</span>
+            </div>
+            <p>Structured handoff process, value realization tracking, churn risk signals, and expansion opportunity identification. The feedback loop that powers the Expand motion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     MOTIONS
+     ================================================================ -->
+<section id="motions">
+  <div class="container">
+    <div class="section-label">Sales Motions</div>
+    <h2>One system, three go-to-market motions — each with its own HAR profile</h2>
+    <p class="section-desc">
+      The same agent catalogue serves different strategic objectives.
+      HAR determines which agents activate, how much autonomy they get, and how your team interacts with them.
+    </p>
+
+    <div class="motions-grid">
+      <div class="motion-card expand">
+        <div class="motion-name">Expand</div>
+        <h3>Grow Revenue Within Existing Accounts</h3>
+        <p class="desc">
+          AI agents continuously analyze your customer base to identify expansion opportunities
+          your team is missing — then guide the complex internal selling process.
+        </p>
+        <div class="motion-har">
+          <div class="har-tag">HAR Profile</div>
+          <p>Medium overall. Validate on analytics and proposals. Direct oversight on stakeholder navigation and negotiation — expansion politics are Complex domain work.</p>
+        </div>
+        <ul class="motion-steps">
+          <li>Customer Success agents monitor satisfaction and usage signals</li>
+          <li>Analytics agents identify expansion-ready accounts and timing</li>
+          <li>Deal Strategy agents guide internal selling for expansions</li>
+          <li>Negotiation agents support contract amendments</li>
+        </ul>
+        <div class="motion-infra">
+          <strong>Infra:</strong> CRM (accounts, usage, contracts), Email (relationship signals), Calendar (meeting patterns)
+        </div>
+      </div>
+
+      <div class="motion-card acquire">
+        <div class="motion-name">Acquire</div>
+        <h3>Win New Customers in Your Markets</h3>
+        <p class="desc">
+          Full-funnel system that shifts HAR levels as deals progress — high automation at top,
+          expert analysis in middle, human-led strategy at bottom where deals are won or lost.
+        </p>
+        <div class="motion-har">
+          <div class="har-tag">HAR Profile</div>
+          <p>Audit at top of funnel (high agent ratio). Validate in middle. Direct at bottom (low agent ratio). HAR shifts as deal complexity increases through the pipeline.</p>
+        </div>
+        <ul class="motion-steps">
+          <li>Market Intel agents identify targets using firmographic and intent signals</li>
+          <li>Outreach agents run personalized sequences (Audit level)</li>
+          <li>Qualification agents score opportunities (Validate level)</li>
+          <li>Deal Strategy agents navigate buying committees (Direct level)</li>
+        </ul>
+        <div class="motion-infra">
+          <strong>Infra:</strong> Full read/write across CRM, Email, Calendar, Documents. Heaviest integration.
+        </div>
+      </div>
+
+      <div class="motion-card enter">
+        <div class="motion-name">Enter</div>
+        <h3>Penetrate New Markets and Segments</h3>
+        <p class="desc">
+          Starts in discovery mode with high human involvement. HAR ratio tightens
+          progressively as market patterns emerge and playbooks get validated.
+        </p>
+        <div class="motion-har">
+          <div class="har-tag">HAR Profile</div>
+          <p>Direct/Full Control initially — maximum human involvement because everything is unknown. Relaxes to Validate, then Audit over 6-12 months as patterns codify into playbooks.</p>
+        </div>
+        <ul class="motion-steps">
+          <li>Market Intel agents probe the new landscape in discovery mode</li>
+          <li>Discovery agents run structured experiments with early prospects</li>
+          <li>Win/Loss agents capture every outcome as a learning signal</li>
+          <li>Outreach activates only after validated playbooks exist</li>
+        </ul>
+        <div class="motion-infra">
+          <strong>Infra:</strong> CRM (experiment tracking), Email (response patterns). Writes new ICPs and playbooks.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PERSONAS (expanded)
+     ================================================================ -->
+<section>
+  <div class="container">
+    <div class="section-label">For Your Organization</div>
+    <h2>HAR speaks to every stakeholder in the buying decision</h2>
+
+    <div class="persona-grid">
+      <div class="persona-item">
+        <h3>VP Sales / Sales Leadership</h3>
+        <p>HAR gives you a systematic way to scale sales capacity without proportional headcount growth. Your team focuses on the Complex and Chaotic domain tasks that actually win deals — stakeholder navigation, deal strategy, negotiation — while AI agents handle the analytical and routine work continuously. Every agent has a defined autonomy level, so you know exactly where humans are in control.</p>
+      </div>
+      <div class="persona-item">
+        <h3>CIO / Technology Office</h3>
+        <p>HAR provides an AI governance framework your board can understand: clear oversight levels per task type, modular architecture that integrates with existing CRM/email/calendar via APIs, independently deployable agents, and a structured risk model. No platform replacement, no data migration, no vendor lock-in. Each agent is testable and auditable against defined HAR parameters.</p>
+      </div>
+      <div class="persona-item">
+        <h3>HR / Learning & Development</h3>
+        <p>HAR redefines workforce planning for the AI era. It identifies exactly which human capabilities become more valuable (Complex domain: deal strategy, relationship building, creative problem-solving) and which get augmented by AI. Training investment shifts from teaching people to do analytical work toward developing the judgment and interpersonal skills that AI cannot replicate.</p>
+      </div>
+      <div class="persona-item">
+        <h3>Executive Leadership</h3>
+        <p>HAR is an operating model for the human-AI organization — not just a sales tool. It provides a framework for designing any workforce where humans and AI agents collaborate, starting with sales as the proving ground. Think of it as the management methodology for your AI transformation, with measurable governance and clear decision rights.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     METHODOLOGY
+     ================================================================ -->
+<section id="methodology" class="bg-alt">
+  <div class="container">
+    <div class="section-label">Foundation</div>
+    <h2>12 years of methodology, now augmented by AI agents</h2>
+
+    <div class="method-flex">
+      <div class="method-content">
+        <p>
+          The Agentic Sales System is not a technology looking for a problem. It is the natural evolution
+          of a proven B2B sales methodology — refined through over a decade of enterprise engagements,
+          now embedded into AI agents governed by the HAR framework.
+        </p>
+        <p>
+          The foundation is <strong>Lean Sales</strong>, a methodology developed by Tapio Nissilä
+          and published in 2013 as <em>"Lean Sales: The Revolutionary Methodology to Get 10–30% More Sales."</em>
+          Lean Sales introduced systematic, data-driven approaches to B2B sales at a time when most
+          organizations relied on individual heroics and gut-feel forecasting.
+        </p>
+        <p>
+          The Agentic Sales System takes the Lean Sales principles — systematic qualification,
+          value-driven selling, continuous improvement through measurement — and embeds them into
+          AI agents that operate continuously across your entire pipeline. What was once a methodology
+          that depended on individual discipline is now a system governed by the HAR model.
+        </p>
+        <p>
+          The <strong>HAR (Human-Agent Ratio)</strong> model represents the next evolution: a dedicated
+          management framework for designing workforces where humans and AI agents collaborate.
+          It uses the Cynefin complexity framework as a classification tool to ensure each task gets
+          the right type of intelligence and the right level of human oversight.
+          HAR is currently being developed as a standalone management framework applicable beyond sales.
+        </p>
+      </div>
+      <div class="method-book">
+        <div class="book-icon">LEAN<br>SALES</div>
+        <h3>Lean Sales</h3>
+        <div class="author">Tapio Nissilä · 2013</div>
+        <p>The Revolutionary Methodology to Get 10–30% More Sales. The foundational methodology now codified into AI agents and governed by the HAR framework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA
+     ================================================================ -->
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="section-label har-label">Get Started</div>
+    <h2>Design your human-AI sales workforce</h2>
+    <p class="section-desc">
+      We start with a HAR assessment — mapping your sales process tasks to complexity domains
+      and identifying where AI agents deliver the fastest value with the right level of human oversight.
+    </p>
+    <div class="cta-actions">
+      <a href="mailto:tapio.nissila@metosin.fi" class="btn-primary">Request a HAR Assessment</a>
+      <a href="#har" class="btn-secondary">Explore the Framework</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="company"><strong>Metosin Oy</strong> — Engineering Growth Partner</div>
+    <div class="links">
+      <a href="#har">HAR Model</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#motions">Sales Motions</a>
+      <a href="#methodology">Methodology</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
